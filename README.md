@@ -52,8 +52,9 @@ Generating explanations for classification predictions based on latent concepts.
 
 3. Get the Prediction:
    * Run `scripts/dev_set/generate_explanation_files/generate_CLS_explanation.sh`
-   * Run `scripts/dev_set/generate_explanation_files/generate_all_tokens_explanation.sh`
    * Run `scripts/dev_set/generate_explanation_files/generate_IG_explanation.sh`
+   * Run `scripts/dev_set/generate_explanation_files/generate_all_tokens_explanation.sh`
+
 
 4. Map Tokens to the Latent Concepts:
    * Run `scripts/dev_set/concept_mapper/match_representation.sh`

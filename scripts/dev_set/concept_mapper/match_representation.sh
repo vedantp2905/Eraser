@@ -1,15 +1,15 @@
 #!/bin/bash
 
 scriptDir=src/concept_mapper
-input=results/dev/clustering/movie_dev.txt.tok.sent_len
+input=movie_dev.txt.tok.sent_len
 working_file=$input.tok.sent_len
 
-dataPath=results/dev/clustering/layer12/results
+dataPath=results/dev/clustering
 minfreq=0
 maxfreq=1000000
 delfreq=1000000
 
-savePath=position_representation_info
+savePath=rposition_representation_info
 mkdir $savePath
 
 layer=12
