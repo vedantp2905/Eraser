@@ -6,6 +6,7 @@ This script is used to get the prediction stats for the classification result.
 
 import pandas as pd
 import argparse
+import os
 
 
 # read the file 'predictions_layer_0.csv'
@@ -30,7 +31,7 @@ def read_csv(file_path, layer):
     return df
 
 
-def check_predictions(df):
+def check_predictions(df, save_path=None):
     """
     Check the predictions with top 5 prediction results and the accuracy of each top 1, top 2, top 5
 
@@ -38,7 +39,8 @@ def check_predictions(df):
     ----------
     df: pandas.DataFrame
         The dataframe of the csv file
-
+    save_path: str, optional
+        Path to save the statistics
     """
 
     top1 = 0
@@ -58,13 +60,26 @@ def check_predictions(df):
         else:
             no_match += 1
 
-    print("Layer: ", args.layer)
-    print("Total Tokens: ", len(df))
-    print("Match with Top 1: ", top1, ', Percentage: ', top1 / len(df) * 100, '%')
-    print("Match with Top 2: ", top2, ', Percentage: ', top2 / len(df) * 100, '%')
-    print("Match with Top 5: ", top5, ', Percentage: ', top5 / len(df) * 100, '%')
-    print("No Match: ", no_match, ', Percentage: ', no_match / len(df) * 100, '%' )
-    print("---------------------------------------------------")
+    stats = [
+        f"Layer: {args.layer}",
+        f"Total Tokens: {len(df)}",
+        f"Match with Top 1: {top1}, Percentage: {top1/len(df)*100}%",
+        f"Match with Top 2: {top2}, Percentage: {top2/len(df)*100}%",
+        f"Match with Top 5: {top5}, Percentage: {top5/len(df)*100}%",
+        f"No Match: {no_match}, Percentage: {no_match/len(df)*100}%",
+        "---------------------------------------------------"
+    ]
+
+    # Print to console
+    for stat in stats:
+        print(stat)
+
+    # Save to file if path provided
+    if save_path:
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        with open(save_path, 'w') as f:
+            for stat in stats:
+                f.write(stat + '\n')
 
 
 def get_all_layer_stats():
@@ -80,10 +95,10 @@ def get_all_layer_stats():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--layer', type=str, default=12, help='layer number (can have multiple layers separated by '
-                                                              'comma)')
+    parser.add_argument('--layer', type=str, default=12, help='layer number (can have multiple layers separated by comma)')
     parser.add_argument('--all_layer_stats', action='store_true', help='get all layer stats')
     parser.add_argument('--file_path', type=str, default='./LR_classification/', help='file path')
+    parser.add_argument('--save_path', type=str, help='path to save the statistics')
 
     args = parser.parse_args()
 
@@ -94,4 +109,4 @@ if __name__ == '__main__':
         for layer in choose_layer:
             args.layer = layer
             df = read_csv(args.file_path, args.layer)
-            check_predictions(df)
+            check_predictions(df, args.save_path)

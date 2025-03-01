@@ -1,10 +1,10 @@
 #!/bin/bash
 
 scriptDir=src/IG_backpropagation
-inputFile=eraser_movie/movie_train.txt.tok.sent_len
+inputFile=results/train/clustering/movie_train.txt.tok.sent_len
 model=microsoft/codebert-base # add path to the model to "xxx"
 
-outDir=result/IG_attributions
+outDir=results/train/IG_attributions
 mkdir ${outDir}
 
 layer=12

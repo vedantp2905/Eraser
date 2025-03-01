@@ -52,8 +52,8 @@ def get_hidden_states_inputs(model, tokenizer, sentence, device):
 
 
 def save_prediction(labels, sentence, output_path):
-    path = output_path + '/predicted.csv'
-
+    os.makedirs(output_path, exist_ok=True)
+    path = os.path.join(output_path, 'predicted.csv')
     df = pd.DataFrame({'sentence': sentence, 'labels': labels})
     df.to_csv(path, sep='\t', index=False)
 

@@ -1,2 +1,0 @@
-[CLS] void add _ 100 ( int numElements , int * data ) { for ( int idx = 0 ; idx < numElements ; idx + + ) { data [ idx ] + = 100 ; } } [SEP]
-[CLS] void get _ ev ( double * old _ arr , double * new _ arr , int size ) { int tid ; for ( tid = 0 ; tid < size ; tid + + ) new _ arr [ tid ] = old _ arr [ tid ] ; } [SEP]

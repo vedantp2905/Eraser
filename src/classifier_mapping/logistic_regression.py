@@ -56,9 +56,8 @@ def save_classifier(classifier, layer, output_Path):
     -------
     None
     """
-    # save the classifier
-    filename = output_Path + 'layer_' + str(layer) + '_classifier.pkl'
-
+    os.makedirs(output_Path, exist_ok=True)
+    filename = os.path.join(output_Path, f'layer_{layer}_classifier.pkl')
     with open(filename, 'wb') as file:
         pickle.dump(classifier, file)
 

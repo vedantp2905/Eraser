@@ -1,0 +1,7 @@
+Layer: 12
+Total Tokens: 55
+Match with Top 1: 22, Percentage: 40.0%
+Match with Top 2: 23, Percentage: 41.81818181818181%
+Match with Top 5: 23, Percentage: 41.81818181818181%
+No Match: 32, Percentage: 58.18181818181818%
+---------------------------------------------------
