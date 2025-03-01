@@ -27,7 +27,8 @@ def read_csv(file_path, layer):
     df: pandas.DataFrame
         The dataframe of the csv file
     """
-    df = pd.read_csv(file_path + 'predictions_layer_' + layer + '.csv', sep='\t')
+    csv_file_path = f"{file_path}/predictions_layer_{layer}.csv"
+    df = pd.read_csv(csv_file_path, sep='\t')
     return df
 
 

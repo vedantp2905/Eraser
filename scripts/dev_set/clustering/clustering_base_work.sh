@@ -1,9 +1,12 @@
 #!/bin/bash
-
+model=${1}
 # Set base directories from project root
 scriptDir=src/clustering
 dataDir=data
-resultsDir=results/dev/clustering
+resultsDir=results/${model}/dev/clustering
+
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
 
 # Create required directories
 mkdir -p ${dataDir}
@@ -21,21 +24,21 @@ cd ${resultsDir}
 sentence_length=512
 
 # 1. Tokenize text with moses tokenizer
-perl ../../../${scriptDir}/tokenizer/tokenizer.perl -l en -no-escape < ../../../${dataDir}/${input} > $input.tok
+perl ${PROJECT_ROOT}/${scriptDir}/tokenizer/tokenizer.perl -l en -no-escape < ${PROJECT_ROOT}/${dataDir}/${input} > $input.tok
 
 # 2. Do sentence length filtering
-python ../../../${scriptDir}/sentence_length.py \
+python ${PROJECT_ROOT}/${scriptDir}/sentence_length.py \
     --text-file $input.tok \
     --length ${sentence_length} \
     --output-file $input.tok.sent_len
 
 # 3. Modify input file
-python ../../../${scriptDir}/modify_input.py \
+python ${PROJECT_ROOT}/${scriptDir}/modify_input.py \
     --text-file $input.tok.sent_len \
     --output-file $input.tok.sent_len.modified
 
 # 4. Calculate vocabulary size
-python ../../../${scriptDir}/frequency_count.py \
+python ${PROJECT_ROOT}/${scriptDir}/frequency_count.py \
     --input-file ${working_file}.modified \
     --output-file ${working_file}.words_freq
 
@@ -46,4 +49,4 @@ ls -l $input.tok.sent_len
 ls -l $input.tok.sent_len.modified
 ls -l ${working_file}.words_freq
 
-cd ../../../
+cd ${PROJECT_ROOT}

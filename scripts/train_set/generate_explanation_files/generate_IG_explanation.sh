@@ -1,10 +1,15 @@
 #!/bin/bash
 
-scriptDir=src/generate_explanation_files
-inputDir=results/train/IG_attributions
-outDir=results/train/IG_explanation_files_mass_50
+model=${1}
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
 
-mkdir ${outDir}
+# Set base directories from project root
+scriptDir=${PROJECT_ROOT}/src/generate_explanation_files
+inputDir=${PROJECT_ROOT}/results/${model}/train/IG_attributions
+outDir=${PROJECT_ROOT}/results/${model}/train/IG_explanation_files_mass_50
+
+mkdir -p ${outDir}
 
 layer=12
 echo ${inputDir}/IG_explanation_layer_${layer}.csv

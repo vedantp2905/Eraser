@@ -1,13 +1,18 @@
 #!/bin/bash
 
-scriptDir=src/classifier_mapping
+model=${1}
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
+
+# Set base directories from project root
+scriptDir=${PROJECT_ROOT}/src/classifier_mapping
+saveDir=${PROJECT_ROOT}/results/${model}/train/classifier_mapping/split_dataset
 
 # Create save directory if it doesn't exist
-saveDir='results/train/classifier_mapping/split_dataset'
 mkdir -p ${saveDir}
 
 # Path to the directory containing the CSV file
-filePath='results/train/classifier_mapping/'
+filePath=${PROJECT_ROOT}/results/${model}/train/classifier_mapping/
 
 python ${scriptDir}/split_dataset.py \
   --file_path ${filePath} \

@@ -1,18 +1,21 @@
 #!/bin/bash
 
+model=${1}
 scriptDir=src/clustering
-model=microsoft/codebert-base
+
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
 layer=12
 
 # Base directories
-baseDir=results/train/clustering
+baseDir=${PROJECT_ROOT}/results/${model}/train/clustering
 inputFile=${baseDir}/movie_train.txt.tok.sent_len
 
 # Create directories
 mkdir -p ${baseDir}/layer${layer}/{activations,dataset,results}
 
 # Extract layer-wise activations
-python ${scriptDir}/neurox_extraction.py \
+python ${PROJECT_ROOT}/${scriptDir}/neurox_extraction.py \
     --model_desc ${model} \
     --input_corpus ${inputFile} \
     --output_file ${baseDir}/layer${layer}/activations/activations.json \
@@ -23,7 +26,7 @@ python ${scriptDir}/neurox_extraction.py \
     --input_type text
 
 # Create dataset file
-python ${scriptDir}/create_data_single_layer.py \
+python ${PROJECT_ROOT}/${scriptDir}/create_data_single_layer.py \
     --text-file ${inputFile}.modified \
     --activation-file ${baseDir}/layer${layer}/activations/activations-layer${layer}.json \
     --output-prefix ${baseDir}/layer${layer}/dataset/dataset
@@ -32,7 +35,7 @@ python ${scriptDir}/create_data_single_layer.py \
 minfreq=5
 maxfreq=20
 delfreq=1000000
-python ${scriptDir}/frequency_filter_data.py \
+python ${PROJECT_ROOT}/${scriptDir}/frequency_filter_data.py \
     --input-file ${baseDir}/layer${layer}/dataset/dataset-dataset.json \
     --frequency-file ${inputFile}.words_freq \
     --sentence-file ${baseDir}/layer${layer}/dataset/dataset-sentences.json \
@@ -49,12 +52,12 @@ RESULTPATH=${baseDir}/layer${layer}/results
 CLUSTERS=400,400,400
 
 # Extract data
-python -u ${scriptDir}/extract_data.py \
+python -u ${PROJECT_ROOT}/${scriptDir}/extract_data.py \
     --input-file ${DATASETPATH} \
     --output-path ${RESULTPATH}
 
 # Create clusters
-python -u ${scriptDir}/get_agglomerative_clusters.py \
+python -u ${PROJECT_ROOT}/${scriptDir}/get_agglomerative_clusters.py \
     --vocab-file ${VOCABFILE} \
     --point-file ${POINTFILE} \
     --output-path ${RESULTPATH} \

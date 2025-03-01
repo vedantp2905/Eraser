@@ -1,8 +1,14 @@
 #!/bin/bash
 
-fileDir=results/train/classifier_mapping/models/validate_predictions/
-saveDir=results/train/classifier_mapping/models/stats
-scriptDir=src/classifier_mapping
+model=${1}
+
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
+
+# Base directories
+fileDir=${PROJECT_ROOT}/results/${model}/train/classifier_mapping/models/validate_predictions
+saveDir=${PROJECT_ROOT}/results/${model}/train/classifier_mapping/models/stats
+scriptDir=${PROJECT_ROOT}/src/classifier_mapping
 
 mkdir -p ${saveDir}
 

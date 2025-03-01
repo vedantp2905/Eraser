@@ -1,12 +1,17 @@
 #!/bin/bash
 
-scriptDir=src/generate_explanation_files
-clusterPath=results/train/clustering/layer12/results
-explanation=results/train/IG_explanation_files_mass_50/explanation_layer_12.txt
+model=${1}
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
+
+# Set base directories from project root
+scriptDir=${PROJECT_ROOT}/src/generate_explanation_files
+clusterPath=${PROJECT_ROOT}/results/${model}/train/clustering/layer12/results
+explanation=${PROJECT_ROOT}/results/${model}/train/IG_explanation_files_mass_50/explanation_layer_12.txt
 clusterSize=400
 percentage=90
 
-savePath=results/train/cluster_Labels_$percentage%
+savePath=${PROJECT_ROOT}/results/${model}/train/cluster_Labels_$percentage%
 mkdir -p $savePath
 
 layer=12

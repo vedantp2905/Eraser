@@ -1,10 +1,14 @@
 #!/bin/bash
 
-scriptDir=src/generate_explanation_files
-model=microsoft/codebert-base
-inputFile=results/train/clustering/movie_train.txt.tok
+model=${1}
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
 
-saveDir=results/train/explanations
+# Set base directories from project root
+scriptDir=${PROJECT_ROOT}/src/generate_explanation_files
+inputFile=${PROJECT_ROOT}/results/${model}/train/clustering/movie_train.txt.tok
+
+saveDir=${PROJECT_ROOT}/results/${model}/train/explanations
 mkdir -p ${saveDir}
 
 layer=12

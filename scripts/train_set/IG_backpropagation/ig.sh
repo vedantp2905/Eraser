@@ -1,11 +1,15 @@
 #!/bin/bash
 
-scriptDir=src/IG_backpropagation
-inputFile=results/train/clustering/movie_train.txt.tok.sent_len
-model=microsoft/codebert-base # add path to the model to "xxx"
+model=${1}
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
 
-outDir=results/train/IG_attributions
-mkdir ${outDir}
+# Set base directories from project root
+scriptDir=${PROJECT_ROOT}/src/IG_backpropagation
+inputFile=${PROJECT_ROOT}/results/${model}/train/clustering/movie_train.txt.tok.sent_len
+
+outDir=${PROJECT_ROOT}/results/${model}/train/IG_attributions
+mkdir -p ${outDir}
 
 layer=12
 saveFile=${outDir}/IG_explanation_layer_${layer}.csv

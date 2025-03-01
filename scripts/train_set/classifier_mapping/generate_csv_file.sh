@@ -1,15 +1,22 @@
 #!/bin/bash
 
+model=${1}
 cluster_num=400
-baseDir=results/train/clustering
+
+# Store the project root directory
+PROJECT_ROOT=$(pwd)
+
+# Base directories
+baseDir=${PROJECT_ROOT}/results/${model}/train/clustering
+scriptDir=${PROJECT_ROOT}/src/classifier_mapping
+
 data=movie_train.txt
-scriptDir=src/classifier_mapping
 
 minfreq=5
 maxfreq=20
 delfreq=1000000
 
-saveDir=results/train/classifier_mapping
+saveDir=${PROJECT_ROOT}/results/${model}/train/classifier_mapping
 mkdir -p $saveDir
 
 i=12
