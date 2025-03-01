@@ -1,10 +1,10 @@
 #!/bin/bash
 
-scriptDir=../../../src/IG_backpropagation
-inputFile=../clustering/movie_dev_subset.txt.tok.sent_len
-model=xxx # add path to the model to "xxx"
+scriptDir=src/IG_backpropagation
+inputFile=results/dev/clustering/movie_dev.txt.tok.sent_len
+model=microsoft/codebert-base # add path to the model to "xxx"
 
-outDir=../IG_attributions
+outDir=results/dev/IG_attributions
 mkdir ${outDir}
 
 layer=12

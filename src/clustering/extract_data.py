@@ -2,6 +2,7 @@ import json
 import numpy as np
 import argparse
 from tqdm import tqdm
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input-file","-i", help="path to the json file")
@@ -14,6 +15,9 @@ input_file = args.input_file
 output_path = args.output_path
 output_vocab_file = args.output_vocab_file
 output_point_file = args.output_point_file
+
+if not os.path.exists(input_file) or os.path.getsize(input_file) == 0:
+    raise ValueError(f"Input file {input_file} is empty or missing")
 
 print("Reading "+input_file)
 tokens = []

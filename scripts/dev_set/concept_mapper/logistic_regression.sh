@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-scriptDir=../../../src/concept_mapper
-fileDir=position_representation_info  #saliency_representation_info #
-classifierDir=../../train_set/classifier_mapping/result/model
+scriptDir=src/concept_mapper
+fileDir=results/dev/position_representation_info  #saliency_representation_info #
+classifierDir=results/dev/classifier_mapping/result/model
 
 mkdir "latent_concepts"
 mkdir "latent_concepts/position_prediction"
