@@ -1,12 +1,12 @@
 #!/bin/bash
 
 scriptDir=src/generate_explanation_files
-clusterPath=eraser_movie/layer12/results
-explanation=IG_explanation_files_mass_50/explanation_layer_12.txt
+clusterPath=results/train/clustering/layer12/results
+explanation=results/train/IG_explanation_files_mass_50/explanation_layer_12.txt
 clusterSize=400
 percentage=90
 
-savePath=eraser_movie/cluster_Labels_$percentage%
+savePath=results/train/cluster_Labels_$percentage%
 mkdir -p $savePath
 
 layer=12

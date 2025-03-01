@@ -1,8 +1,8 @@
 #!/bin/bash
 
 scriptDir=src/generate_explanation_files
-inputDir=result/IG_attributions
-outDir=IG_explanation_files_mass_50
+inputDir=results/train/IG_attributions
+outDir=results/train/IG_explanation_files_mass_50
 
 mkdir ${outDir}
 
