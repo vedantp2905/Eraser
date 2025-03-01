@@ -1,0 +1,1 @@
+void add_100 ( int numElements , int * data ) { for ( int idx = 0 ; idx < numElements ; idx ++ ) { data [ idx ] += 100 ; } }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-scriptDir=../../../src/classifier_mapping
+scriptDir=src/classifier_mapping
 fileDir=split_dataset
 savePath=result
 

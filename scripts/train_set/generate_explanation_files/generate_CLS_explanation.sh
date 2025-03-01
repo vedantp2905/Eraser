@@ -1,8 +1,8 @@
 #!/bin/bash
 
-scriptDir=../../../src/generate_explanation_files
-model=xxx # add the path to the model to "xxx"
-inputFile=../clustering/movie_train.txt.tok
+scriptDir=src/generate_explanation_files
+model=microsoft/codebert-base # add the path to the model to "xxx"
+inputFile=eraser_movie/movie_train.txt.tok
 
 saveDir=.
 

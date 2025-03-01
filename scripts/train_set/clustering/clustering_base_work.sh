@@ -1,13 +1,13 @@
 #!/bin/bash
 
-scriptDir=../../../src/clustering
-inputPath=../../../data/ # path to a sentence file
+scriptDir=../src/clustering
+inputPath=../data/ # path to a sentence file
 input=movie_train.txt #name of the sentence file
 
 mkdir "eraser_movie"
-
+cd eraser_movie
 # maximum sentence length
-sentence_length=300
+sentence_length=512
 
 working_file=$input.tok.sent_len #do not change this
 
@@ -23,3 +23,5 @@ python ${scriptDir}/modify_input.py --text-file $input.tok.sent_len --output-fil
 #4. Calculate vocabulary size
 python ${scriptDir}/frequency_count.py --input-file ${working_file}.modified --output-file ${working_file}.words_freq
 
+cd ..
+echo $PWD
