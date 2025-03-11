@@ -11,6 +11,16 @@ This is the codebase for our EMNLP 2024 paper: [Latent Concept-based Explanation
 ## Usage
 Generating explanations for classification predictions based on latent concepts.
 
+Wrapper script to run the code is `run_model.sh`.
+
+Run it with the following command:
+```
+./run_model.sh "<model_name>"
+
+Example:
+./run_model.sh "microsoft/codebert-base"
+```
+
 ## Project Structure
 - `data/`: Contains the datasets used for analysis.
 - `src/`: Source code for the analysis.
@@ -25,7 +35,7 @@ Generating explanations for classification predictions based on latent concepts.
 ## Run Code
 ### Training Phase
 1. Extract Latent Concepts:
-   * Run `scripts/train_set/clustering/clustering_base_work.sh`
+   * Run `scripts/train_set/clustering/clustering_base_work.sh --model=
    * Run `scripts/train_set/clustering/clustering_conceptX.sh`
 
 2. Train a ConceptMapper:

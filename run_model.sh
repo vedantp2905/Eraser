@@ -76,10 +76,11 @@ if [ $? -ne 0 ]; then echo "Error in ig.sh"; exit 1; fi
 echo "4. Getting Training Set Predictions..."
 bash scripts/train_set/generate_explanation_files/generate_CLS_explanation.sh "$model"
 if [ $? -ne 0 ]; then echo "Error in generate_CLS_explanation.sh"; exit 1; fi
-bash scripts/train_set/generate_explanation_files/generate_all_tokens_explanation.sh "$model"
-if [ $? -ne 0 ]; then echo "Error in generate_all_tokens_explanation.sh"; exit 1; fi
 bash scripts/train_set/generate_explanation_files/generate_IG_explanation.sh "$model"
 if [ $? -ne 0 ]; then echo "Error in generate_IG_explanation.sh"; exit 1; fi
+bash scripts/train_set/generate_explanation_files/generate_all_tokens_explanation.sh "$model"
+if [ $? -ne 0 ]; then echo "Error in generate_all_tokens_explanation.sh"; exit 1; fi
+
 
 echo "Starting Inference Phase..."
 
