@@ -42,11 +42,4 @@ python ${PROJECT_ROOT}/${scriptDir}/frequency_count.py \
     --input-file ${working_file}.modified \
     --output-file ${working_file}.words_freq
 
-# Add debugging
-echo "Checking generated files..."
-ls -l $input.tok
-ls -l $input.tok.sent_len
-ls -l $input.tok.sent_len.modified
-ls -l ${working_file}.words_freq
-
 cd ${PROJECT_ROOT}

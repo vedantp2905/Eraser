@@ -21,6 +21,9 @@ Example:
 ./run_model.sh "microsoft/codebert-base"
 ```
 
+Layer Number and clusters are set is the clustering_coneptX for train and dev scripts
+
+
 ## Project Structure
 - `data/`: Contains the datasets used for analysis.
 - `src/`: Source code for the analysis.
